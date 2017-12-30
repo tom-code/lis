@@ -1,10 +1,15 @@
 
 const int push_detect_time = 100;
 
-const int button_start_pin = 5;
-const int button_reset_pin = 4;
-const int button_plus_pin  = 2;
-const int button_minus_pin = 3;
+const int D2=5;
+const int D3=6;
+const int D4=7;
+const int D5=8;
+
+const int button_start_pin = D5;
+const int button_reset_pin = D4;
+const int button_plus_pin  = D2;
+const int button_minus_pin = D3;
 
 const int out_pin1 = 12;
 const int out_pin2 = 11;
