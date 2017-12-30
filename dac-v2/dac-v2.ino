@@ -1,10 +1,10 @@
 
 const int push_detect_time = 100;
 
-const int button_start_pin = A0;
-const int button_reset_pin = A2;
-const int button_plus_pin  = A3;
-const int button_minus_pin = A4;
+const int button_start_pin = 5;
+const int button_reset_pin = 4;
+const int button_plus_pin  = 2;
+const int button_minus_pin = 3;
 
 const int out_pin1 = 12;
 const int out_pin2 = 11;
@@ -29,9 +29,7 @@ template<int PIN> class db {
   }
 
   void loop() {
-    int val_tmp = analogRead(PIN);
-    int val = LOW;
-    if (val_tmp > 500) val = HIGH; 
+    int val = digitalRead(PIN);
     if (val != last_value) {
       last_value = val;
       last_change_milis = millis();
@@ -45,12 +43,12 @@ template<int PIN> class db {
   }
 };
 void output(int val) {
-  writ(out_pin1, val&1);
-  writ(out_pin2, val&2);
-  writ(out_pin3, val&4);
-  writ(out_pin4, val&8);
-  writ(out_pin5, val&16);
-  writ(out_pin6, val&32);
+  //writ(out_pin1, val&1);
+  //writ(out_pin2, val&2);
+  //writ(out_pin3, val&4);
+  //writ(out_pin4, val&8);
+  //writ(out_pin5, val&16);
+  //writ(out_pin6, val&32);
   Serial.print("write value ");
   Serial.println(val, BIN);
 }
@@ -59,16 +57,16 @@ int value = 32;
 int pamet = 32;
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(out_pin1, OUTPUT);
-  pinMode(out_pin2, OUTPUT);
-  pinMode(out_pin3, OUTPUT);
-  pinMode(out_pin4, OUTPUT);
-  pinMode(out_pin5, OUTPUT);
-  pinMode(out_pin6, OUTPUT);
-  pinMode(button_start_pin, INPUT);
-  pinMode(button_reset_pin, INPUT);
-  pinMode(button_plus_pin, INPUT);
-  pinMode(button_minus_pin, INPUT);
+  //pinMode(out_pin1, OUTPUT);
+  //pinMode(out_pin2, OUTPUT);
+  //pinMode(out_pin3, OUTPUT);
+  //pinMode(out_pin4, OUTPUT);
+  //pinMode(out_pin5, OUTPUT);
+  //pinMode(out_pin6, OUTPUT);
+  pinMode(button_start_pin, INPUT_PULLUP);
+  pinMode(button_reset_pin, INPUT_PULLUP);
+  pinMode(button_plus_pin, INPUT_PULLUP);
+  pinMode(button_minus_pin, INPUT_PULLUP);
   Serial.begin(9600);
   Serial.println("ready");
   value = 32;
