@@ -56,6 +56,10 @@ void output(int val) {
   //writ(out_pin6, val&32);
   Serial.print("write value ");
   Serial.println(val, BIN);
+
+  //0-63
+  int val_dac = val*16;
+  analogWrite(PIN_DAC0, val_dac );
 }
 
 int value = 32;
@@ -68,6 +72,9 @@ void setup() {
   //pinMode(out_pin4, OUTPUT);
   //pinMode(out_pin5, OUTPUT);
   //pinMode(out_pin6, OUTPUT);
+  pinMode(PIN_DAC0, OUTPUT);
+  analogWriteResolution(10);
+
   pinMode(button_start_pin, INPUT_PULLUP);
   pinMode(button_reset_pin, INPUT_PULLUP);
   pinMode(button_plus_pin, INPUT_PULLUP);
