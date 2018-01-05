@@ -62,8 +62,8 @@ void output(int val) {
   analogWrite(PIN_DAC0, val_dac );
 }
 
-int value = 32;
-int pamet = 32;
+int value = 31;
+int pamet = 31;
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   //pinMode(out_pin1, OUTPUT);
@@ -75,6 +75,7 @@ void setup() {
   //pinMode(PIN_DAC0, OUTPUT);
   analogWriteResolution(8);
   analogReference(AR_EXTERNAL);
+  DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VREFP_Val;
 
   pinMode(button_start_pin, INPUT_PULLUP);
   pinMode(button_reset_pin, INPUT_PULLUP);
@@ -82,8 +83,8 @@ void setup() {
   pinMode(button_minus_pin, INPUT_PULLUP);
   Serial.begin(9600);
   Serial.println("ready");
-  value = 32;
-  pamet = 32;
+  value = 31;
+  pamet = 31;
   output(value);
   delay(1000);
   Serial.println("start");
@@ -124,7 +125,7 @@ void loop() {
   if (button_reset.is_edge()) {
     Serial.println("button reset");
     pamet = value;
-    value = 32;
+    value = 31;
     output(value);
     pauza = 1;
   }
