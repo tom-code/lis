@@ -58,7 +58,7 @@ void output(int val) {
   Serial.println(val, BIN);
 
   //0-63
-  int val_dac = val*16;
+  unsigned int val_dac = ((unsigned int)val)*4;
   analogWrite(PIN_DAC0, val_dac );
 }
 
@@ -72,8 +72,8 @@ void setup() {
   //pinMode(out_pin4, OUTPUT);
   //pinMode(out_pin5, OUTPUT);
   //pinMode(out_pin6, OUTPUT);
-  pinMode(PIN_DAC0, OUTPUT);
-  analogWriteResolution(10);
+  //pinMode(PIN_DAC0, OUTPUT);
+  analogWriteResolution(8);
   analogReference(AR_EXTERNAL);
 
   pinMode(button_start_pin, INPUT_PULLUP);
