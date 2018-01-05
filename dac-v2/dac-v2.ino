@@ -1,10 +1,10 @@
 
 const int push_detect_time = 100;
 
-const int D2=5;
-const int D3=6;
-const int D4=7;
-const int D5=8;
+const int D2=2;
+const int D3=3;
+const int D4=4;
+const int D5=5;
 
 const int button_start_pin = D5;
 const int button_reset_pin = D4;
@@ -74,6 +74,7 @@ void setup() {
   //pinMode(out_pin6, OUTPUT);
   pinMode(PIN_DAC0, OUTPUT);
   analogWriteResolution(10);
+  analogReference(AR_EXTERNAL);
 
   pinMode(button_start_pin, INPUT_PULLUP);
   pinMode(button_reset_pin, INPUT_PULLUP);
